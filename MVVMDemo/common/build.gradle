@@ -1,5 +1,13 @@
-apply plugin: 'com.android.library'
+//判断是否独立运行，将模块作为apk还是module
+if(singleModule.toBoolean()){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+
 apply from: '../depandencies.gradle'
+
+
 
 android {
     compileSdkVersion 30
@@ -7,6 +15,10 @@ android {
 
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"
+        //只有独立运行才需要applicationId
+        if(singleModule.toBoolean()){
+            applicationId "com.mvvm.app.common"
+        }
     }
 
 }

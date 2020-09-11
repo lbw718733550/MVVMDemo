@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+apply from: '../depandencies.gradle'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.blankj:utilcodex:1.29.0'
+}

@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+apply from: '../depandencies.gradle'
+
+
+android {
+    //other from depandencies.gradle
+    defaultConfig {
+    }
+
+}
+
+dependencies {
+    //other from depandencies.gradle
+
+    api project(path: ':common')
+}

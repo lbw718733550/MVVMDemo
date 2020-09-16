@@ -1,4 +1,4 @@
-package com.mvvm.common.retrofit.support;
+package com.mvvm.common.network.support;
 
 import androidx.annotation.Nullable;
 

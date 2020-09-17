@@ -1,24 +1,15 @@
-//if(singleModule){
-//    apply plugin: 'com.android.application'
-//}else {
 apply plugin: 'com.android.library'
-//}
-apply from: '../depandencies.gradle'
-
+apply from: '../dependencies.gradle'
 
 android {
-    //other from depandencies.gradle
+    //from dependencies.gradle
     defaultConfig {
-//        consumerProguardFiles "consumer-rules.pro"
-//        if(singleModule){
-//            applicationId "com.mvvm.common"
-//        }
-//
+
     }
 }
 
 dependencies {
-    //other from depandencies.gradle
+    //from dependencies.gradle
 
     //okhttp
     implementation("com.squareup.okhttp3:okhttp:4.8.1")

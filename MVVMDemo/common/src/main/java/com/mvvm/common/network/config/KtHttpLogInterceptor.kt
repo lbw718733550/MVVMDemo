@@ -1,7 +1,7 @@
 package com.lbw.retrofitdemo.retrofit.config
 
 import android.util.Log
-import com.lbw.retrofitdemo.retrofit.support.CniaoUtils
+import com.mvvm.common.network.support.CniaoUtils
 import okhttp3.*
 import okio.Buffer
 import java.net.URLDecoder

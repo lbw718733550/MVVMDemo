@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -21,21 +22,21 @@ import androidx.viewbinding.ViewBinding
 //region 扩展函数
 
 /**
- * 描述：activity中使用DataBinding时setContentView的简化
+ * activity中使用DataBinding时setContentView的简化
  * [layout] 布局id
  * @return 返回binding的对象实例
  */
 fun <T : ViewDataBinding> Activity.bindView(@LayoutRes layout: Int) : T = DataBindingUtil.setContentView(this, layout)
 
 /**
- * 描述：activity中使用DataBinding时setContentView的简化
+ * activity中使用DataBinding时setContentView的简化
  * [view] View
  * @return 返回binding的对象实例 T类型 可null的
  */
 fun <T : ViewDataBinding> Activity.bindView(view: View) : T? = DataBindingUtil.bind<T>(view)
 
 /**
- * 描述：沉浸式状态栏，使得可以在状态栏里面显示部分需要的图片
+ * 沉浸式状态栏，使得可以在状态栏里面显示部分需要的图片
  * 注意：需要在setContentView之前调用该函数才生效
  */
 fun Activity.immersiveStatusBar(){
@@ -49,13 +50,25 @@ fun Activity.immersiveStatusBar(){
 }
 
 /**
- * 描述：键盘的隐藏
+ * 键盘的隐藏
  * [view] 事件控件view
  */
 fun Activity.dismissKeyBoard(view: View) {
     val imm: InputMethodManager? = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager?
     imm?.hideSoftInputFromWindow(view.windowToken, 0)
 }
+
+/**
+ * 获取 DecorView
+ */
+val Activity.decorView: FrameLayout?
+    get() = (takeIf { !isFinishing && !isDestroyed }?.window?.decorView) as? FrameLayout
+
+/**
+ * 获取contentView
+ */
+val Activity.contentView: FrameLayout?
+    get() = takeIf { !isFinishing && !isDestroyed }?.window?.decorView?.findViewById<FrameLayout>(android.R.id.content)
 
 
 

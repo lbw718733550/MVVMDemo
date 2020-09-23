@@ -28,7 +28,7 @@ class SingleLiveData<T> : MutableLiveData<T>() {
             Log.w(TAG, "多个观察者存在的时候，只会有一个被通知到数据更新")
         }
 
-        super.observe(owner, {
+        super.observe(owner, Observer{
             if (mPending.compareAndSet(true, false)) {
                 observer.onChanged(it)
             }

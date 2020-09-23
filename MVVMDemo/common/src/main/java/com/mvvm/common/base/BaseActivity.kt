@@ -12,11 +12,14 @@ import com.mvvm.common.ktx.viewLifeCycleOwner
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+
+
+
     /**
      * 扩展LiveData的observer函数
      */
-    protected inline fun <T : Any> LiveData<T>.observerKt(crossinline block: (T) -> Unit) {
-        this.observe(viewLifeCycleOwner, {
+    protected inline fun <T : Any> LiveData<T>.observerKt(crossinline block: (T?) -> Unit) {
+        this.observe(viewLifeCycleOwner, Observer{
             block.invoke(it)
         })
     }

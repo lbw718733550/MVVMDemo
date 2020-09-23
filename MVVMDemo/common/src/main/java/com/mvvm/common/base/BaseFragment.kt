@@ -20,8 +20,8 @@ abstract class BaseFragment : Fragment {
     /**
      * 扩展LiveData的observer函数
      */
-    protected inline fun <T : Any> LiveData<T>.observerKt(crossinline block: (T) -> Unit) {
-        this.observe(viewLifecycleOwner, {
+    protected inline fun <T : Any> LiveData<T>.observerKt(crossinline block: (T?) -> Unit) {
+        this.observe(viewLifecycleOwner, Observer{
             block.invoke(it)
         })
     }

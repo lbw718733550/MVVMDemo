@@ -18,7 +18,7 @@ dependencies {
         implementation project(path: ':study')
         implementation project(path: ':home')
         implementation project(path: ':login')
-        implementation project('::service')
+        implementation project(':service')
     }
 
     //今日头条的适配方案

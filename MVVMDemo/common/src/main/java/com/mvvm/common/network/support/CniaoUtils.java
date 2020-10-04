@@ -3,7 +3,7 @@ package com.mvvm.common.network.support;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.EncryptUtils;
-import com.lbw.retrofitdemo.retrofit.config.CniaoConfigKt;
+import com.mvvm.retrofitdemo.retrofit.config.CniaoConfigKt;
 
 
 import java.util.regex.Matcher;

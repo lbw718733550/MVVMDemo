@@ -1,4 +1,4 @@
-package com.lbw.retrofitdemo.retrofit.model
+package com.mvvm.retrofitdemo.retrofit.model
 
 /**
  * 基础的网络返回数据结构

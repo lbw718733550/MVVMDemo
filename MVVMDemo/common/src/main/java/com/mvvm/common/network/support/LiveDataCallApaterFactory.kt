@@ -1,7 +1,7 @@
-package com.lbw.retrofitdemo.retrofit.support
+package com.mvvm.retrofitdemo.retrofit.support
 
 import androidx.lifecycle.LiveData
-import com.lbw.retrofitdemo.retrofit.model.ApiResponse
+import com.mvvm.retrofitdemo.retrofit.model.ApiResponse
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType

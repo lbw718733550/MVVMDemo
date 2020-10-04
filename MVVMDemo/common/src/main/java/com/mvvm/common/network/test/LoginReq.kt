@@ -1,4 +1,4 @@
-package com.lbw.retrofitdemo
+package com.mvvm.retrofitdemo
 
 /**
  * @creater：lbw

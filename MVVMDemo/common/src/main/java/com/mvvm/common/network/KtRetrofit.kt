@@ -1,7 +1,7 @@
-package com.lbw.retrofitdemo.retrofit
+package com.mvvm.retrofitdemo.retrofit
 
-import com.lbw.retrofitdemo.retrofit.config.*
-import com.lbw.retrofitdemo.retrofit.config.LocalCookieJar
+import com.mvvm.retrofitdemo.retrofit.config.*
+import com.mvvm.retrofitdemo.retrofit.config.LocalCookieJar
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

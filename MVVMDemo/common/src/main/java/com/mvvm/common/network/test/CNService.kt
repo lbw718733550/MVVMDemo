@@ -1,8 +1,8 @@
-package com.lbw.retrofitdemo
+package com.mvvm.retrofitdemo
 
 import androidx.lifecycle.LiveData
-import com.lbw.retrofitdemo.retrofit.model.ApiResponse
-import com.lbw.retrofitdemo.retrofit.model.NetResponse
+import com.mvvm.retrofitdemo.retrofit.model.ApiResponse
+import com.mvvm.retrofitdemo.retrofit.model.NetResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

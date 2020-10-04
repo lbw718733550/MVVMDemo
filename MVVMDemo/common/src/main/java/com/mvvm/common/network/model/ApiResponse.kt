@@ -1,4 +1,4 @@
-package com.lbw.retrofitdemo.retrofit.model
+package com.mvvm.retrofitdemo.retrofit.model
 
 import retrofit2.Response
 

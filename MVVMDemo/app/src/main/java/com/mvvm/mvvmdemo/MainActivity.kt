@@ -1,12 +1,9 @@
-package com.lbw.mvvmdemo
+package com.mvvm.mvvmdemo
 
-import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.lbw.mvvmdemo.databinding.ActivityMainBinding
+import com.mvvm.mvvmdemo.databinding.ActivityMainBinding
 import com.mvvm.common.base.BaseActivity
-import com.mvvm.common.ktx.bindView
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -20,6 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         super.initView()
+        //简单联动bottomnvi和fragment的联动
         val navController = findNavController(R.id.fcv_main)
         mBinding.bnvMain.setupWithNavController(navController)
     }

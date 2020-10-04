@@ -1,4 +1,4 @@
-package com.lbw.mvvmdemo
+package com.mvvm.mvvmdemo
 
 import org.junit.Test
 

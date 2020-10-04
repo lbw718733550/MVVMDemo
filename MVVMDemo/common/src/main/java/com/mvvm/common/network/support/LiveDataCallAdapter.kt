@@ -1,8 +1,8 @@
-package com.lbw.retrofitdemo.retrofit.support
+package com.mvvm.retrofitdemo.retrofit.support
 
 import androidx.lifecycle.LiveData
-import com.lbw.retrofitdemo.retrofit.model.ApiResponse
-import com.lbw.retrofitdemo.retrofit.model.UNKNOWN_ERROR_CODE
+import com.mvvm.retrofitdemo.retrofit.model.ApiResponse
+import com.mvvm.retrofitdemo.retrofit.model.UNKNOWN_ERROR_CODE
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback

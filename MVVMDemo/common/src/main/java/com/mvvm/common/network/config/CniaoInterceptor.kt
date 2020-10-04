@@ -1,4 +1,4 @@
-package com.lbw.retrofitdemo.retrofit.config
+package com.mvvm.retrofitdemo.retrofit.config
 
 import com.blankj.utilcode.util.*
 import com.google.gson.GsonBuilder

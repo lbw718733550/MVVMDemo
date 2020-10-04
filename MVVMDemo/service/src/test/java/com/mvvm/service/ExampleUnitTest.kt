@@ -1,4 +1,4 @@
-package com.lbw.service
+package com.mvvm.service
 
 import org.junit.Test
 

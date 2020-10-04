@@ -1,16 +1,12 @@
-package com.lbw.retrofitdemo.retrofit.support
+package com.mvvm.retrofitdemo.retrofit.support
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.Gson
-import com.lbw.retrofitdemo.retrofit.model.ApiResponse
-import com.lbw.retrofitdemo.retrofit.model.UNKNOWN_ERROR_CODE
-import okhttp3.Response
+import com.mvvm.retrofitdemo.retrofit.model.ApiResponse
+import com.mvvm.retrofitdemo.retrofit.model.UNKNOWN_ERROR_CODE
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.await
 import retrofit2.awaitResponse
-import java.io.IOException
 
 /**
  * retrofit 的 Response的扩展函数，属性

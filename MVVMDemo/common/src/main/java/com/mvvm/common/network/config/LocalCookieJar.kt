@@ -1,4 +1,4 @@
-package com.lbw.retrofitdemo.retrofit.config
+package com.mvvm.retrofitdemo.retrofit.config
 
 import okhttp3.Cookie
 import okhttp3.CookieJar

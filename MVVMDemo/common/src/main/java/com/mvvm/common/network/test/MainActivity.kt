@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.LogUtils
-import com.lbw.retrofitdemo.CNService
-import com.lbw.retrofitdemo.LoginReq
-import com.lbw.retrofitdemo.retrofit.KtRetrofit
-import com.lbw.retrofitdemo.retrofit.model.Empty
-import com.lbw.retrofitdemo.retrofit.model.Error
-import com.lbw.retrofitdemo.retrofit.model.Success
-import com.lbw.retrofitdemo.retrofit.support.serverRsp
-import com.lbw.retrofitdemo.retrofit.support.toLiveData
+import com.mvvm.retrofitdemo.CNService
+import com.mvvm.retrofitdemo.LoginReq
+import com.mvvm.retrofitdemo.retrofit.KtRetrofit
+import com.mvvm.retrofitdemo.retrofit.model.Empty
+import com.mvvm.retrofitdemo.retrofit.model.Error
+import com.mvvm.retrofitdemo.retrofit.model.Success
+import com.mvvm.retrofitdemo.retrofit.support.serverRsp
+import com.mvvm.retrofitdemo.retrofit.support.toLiveData
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {

@@ -13,7 +13,7 @@ buildscript {
         lib_version_code = 1
         lib_version_name = "1.0.0"
 
-        navigation_version = "2.2.1"//navigation 版本号，需要在dependencies和classpath保持一致
+        navigation_version = "2.3.0"//navigation 版本号，需要在dependencies和classpath保持一致
         koin_version = '2.1.6'//依赖注入框架
 
     }

@@ -1,5 +1,7 @@
 package com.mvvm.mvvmdemo
 
+import android.view.MenuItem
+import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -9,6 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.mvvm.mvvmdemo.databinding.ActivityMainBinding
 import com.mvvm.common.base.BaseActivity
+import com.mvvm.common.widget.BnvVp2Mediator
 import com.mvvm.course.CourseFragment
 import com.mvvm.home.HomeFragment
 import com.mvvm.mine.MineFragment
@@ -41,32 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.initView()
         mBinding.apply {
             vp2Main.adapter = MainViewPagerAdapter(this@MainActivity, fragments)
-            //viewpage页面更改回调
-            vp2Main.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
-                //页面选择
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    //切换bottomNavigationView对于id
-                    bnvMain.selectedItemId = when(position){
-                        INDEXT_HOME -> R.id.homeFragment
-                        INDEXT_COURSE -> R.id.courseFragment
-                        INDEXT_STUDY -> R.id.studyFragment
-                        INDEXT_MINE -> R.id.mineFragment
-                        else -> error("viewpage2的fragment索引位置${position}越界")
-                    }
-                }
-            })
-            //bnv更改的时候切换对应viewpage元素
-            bnvMain.setOnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.homeFragment -> vp2Main.currentItem = INDEXT_HOME
-                    R.id.courseFragment -> vp2Main.currentItem = INDEXT_COURSE
-                    R.id.studyFragment -> vp2Main.currentItem = INDEXT_STUDY
-                    R.id.mineFragment -> vp2Main.currentItem = INDEXT_MINE
-                    else -> error("bnv的item的id${item.itemId} 没有对应的viewpage2的元素")
-                }
-                true
-            }
+            BnvVp2Mediator(bnvMain, vp2Main).attach()
         }
     }
 

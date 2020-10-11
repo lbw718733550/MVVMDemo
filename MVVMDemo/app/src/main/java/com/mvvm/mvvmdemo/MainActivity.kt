@@ -27,7 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         const val INDEXT_STUDY = 2  //索引位置 - 学习
         const val INDEXT_MINE = 3   //索引位置 - 我的
     }
-    /**  用于复用fragment */
+    /**  用于复用fragment 这种默认是复用fragment */
     private val fragments = mapOf<Int, Fragment>(
         INDEXT_HOME to HomeFragment(),
         INDEXT_COURSE to CourseFragment(),
@@ -44,7 +44,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.initView()
         mBinding.apply {
             vp2Main.adapter = MainViewPagerAdapter(this@MainActivity, fragments)
-            BnvVp2Mediator(bnvMain, vp2Main).attach()
+            BnvVp2Mediator(bnvMain, vp2Main){bnv, vp2 ->
+                //不需要用户滑动
+                vp2.isUserInputEnabled = false
+            }.attach()
         }
     }
 
@@ -60,13 +63,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 class MainViewPagerAdapter(fragmentActivity: FragmentActivity,
                            private val fragments: Map<Int, Fragment>) : FragmentStateAdapter(fragmentActivity){
 
-
-
     override fun getItemCount(): Int = fragments.size
 
     override fun createFragment(position: Int): Fragment {
         return fragments[position] ?: error("请确保fragments数据源和viewpage2的index匹配设置")
     }
 
-
 }
+
+

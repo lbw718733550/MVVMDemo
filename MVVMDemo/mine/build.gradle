@@ -12,7 +12,7 @@ android {
     defaultConfig {
         //只有独立运行时候才需要applicationId
         if (singleModule.toBoolean()) {
-            applicationId "com.cniao5.app.study"
+            applicationId "com.cniao5.app.mine"
         }
     }
 }

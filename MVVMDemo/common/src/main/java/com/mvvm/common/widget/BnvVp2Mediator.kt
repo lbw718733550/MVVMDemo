@@ -10,7 +10,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  */
 class BnvVp2Mediator(
     private val bnv: BottomNavigationView,
-    private val vp2: ViewPager2
+    private val vp2: ViewPager2,
+    private val config: ((BottomNavigationView, ViewPager2) -> Unit) ?= null
 ) {
 
     private var map = mutableMapOf<MenuItem, Int>()
@@ -24,6 +25,8 @@ class BnvVp2Mediator(
 
     /**  放attach中让语义更通顺 BnvVp2Mediator().attach() */
     fun attach(){
+        //调用config设置
+        config?.invoke(bnv, vp2)
         //viewpage页面更改回调
         vp2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
             //页面选择

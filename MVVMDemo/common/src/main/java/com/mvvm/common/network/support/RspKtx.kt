@@ -3,9 +3,11 @@ package com.mvvm.retrofitdemo.retrofit.support
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mvvm.retrofitdemo.retrofit.model.ApiResponse
+import com.mvvm.retrofitdemo.retrofit.model.DataResult
 import com.mvvm.retrofitdemo.retrofit.model.UNKNOWN_ERROR_CODE
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.await
 import retrofit2.awaitResponse
 
 /**
@@ -40,7 +42,22 @@ fun <T : Any> Call<T>.toLiveData(): LiveData<T?> {
     return live
 }
 
-
+/**
+ * 扩展retrofit的返回数据，调用await，并catch超时等异常
+ * @return DataResult 返回格式为ApiResponse封装
+ */
+suspend fun <T : Any> Call<T>.serverData(): DataResult<T> {
+    var result: DataResult<T> = DataResult.Loading
+    kotlin.runCatching {
+        this.await()
+    }.onFailure {
+        result = DataResult.Error(RuntimeException(it))
+        it.printStackTrace()
+    }.onSuccess {
+        result = DataResult.Success(it)
+    }
+    return result
+}
 
 
 /**

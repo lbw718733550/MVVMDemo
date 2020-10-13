@@ -11,8 +11,6 @@ sealed class DataResult<out R> {
 
     /** 成功状态的时候  */
     data class Success<out T>(val data: T): DataResult<T>()
-    /**  返回数据为空的时候 */
-    class Empty(): DataResult<Nothing>()
     /** 失败状态的时候  */
     data class Error(val exception: Exception): DataResult<Nothing>()
     /** 数据加载中 */
@@ -21,7 +19,6 @@ sealed class DataResult<out R> {
     override fun toString(): String {
         return when(this){
             is Success<*> -> "Success[data=$data]"
-            is Empty -> "Empty[data=]"
             is Error -> "Error[exception=$exception]"
             is Loading -> "Loading"
         }

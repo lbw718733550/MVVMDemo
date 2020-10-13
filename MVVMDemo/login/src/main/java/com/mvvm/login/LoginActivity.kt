@@ -1,6 +1,8 @@
 package com.mvvm.login
 
 import androidx.activity.viewModels
+import com.blankj.utilcode.util.ToastUtils
+import com.cniao5.login.net.RegisterRsp
 import com.mvvm.common.base.BaseActivity
 import com.mvvm.login.databinding.ActivityLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -12,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class LoginActivity : BaseActivity<ActivityLoginBinding>(){
 
-    private val viewModel: LoginViewModel by viewModels { defaultViewModelProviderFactory }
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun getLayoutRes(): Int = R.layout.activity_login
 
@@ -21,14 +23,35 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(){
         super.initView()
         mBinding?.apply {
             vm = viewModel
+            //点击事件
+            mtoolbarLogin.setNavigationOnClickListener { finish() }
+            tvRegisterLogin.setOnClickListener {
+                ToastUtils.showShort("当前课程项目未实现注册账号功能!")
+            }
         }
     }
 
     override fun initConfig() {
         super.initConfig()
+        viewModel.apply {
+
+            liveRegisterRsp.observeKt {
+                if (it?.is_register == RegisterRsp.FLAG_IS_REGISTERED) {
+                    repoLogin()
+                }
+            }
+            liveLoginRsp.observeKt {
+                ToastUtils.showShort("登录结果 " + it.toString())
+            }
+        }
     }
 
     override fun initData() {
         super.initData()
     }
+
+
+
+
+
 }

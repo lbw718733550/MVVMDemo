@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
  * @time：20/9/17 16:15
  * @desc：创建一个空的liveData的对象类
  */
-class AbsentLifeData<T : Any?> private constructor() : LiveData<T>(){
+class AbsentLiveData<T : Any?> private constructor() : LiveData<T>(){
 
     init {
         postValue(null)
@@ -15,7 +15,7 @@ class AbsentLifeData<T : Any?> private constructor() : LiveData<T>(){
 
     companion object {
         fun <T : Any?>create(): LiveData<T>{
-            return AbsentLifeData<T>()
+            return AbsentLiveData<T>()
         }
     }
 

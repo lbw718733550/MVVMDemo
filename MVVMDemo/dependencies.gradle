@@ -59,6 +59,9 @@ android {
     //使用jetPack的组件，会要求jdk 1.8最好，有的时候会遇到报错，需要配置如下，避免target jvm 1.8的那个报错
     kotlinOptions {
         jvmTarget = "1.8"
+        //开启一些实验注解
+//        freeCompilerArgs += ["-Xuse-experimental=kotlin.contracts.ExperimentalContracts",]
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn",]
     }
 }
 

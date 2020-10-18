@@ -1,5 +1,6 @@
 <resources>
     <!-- Base application theme. -->
+    <!-- 这里使用 **.MaterialComponents.** 有一点是因为有使用 app中布局文件有使用Material控件不用的话MaterialButton等可能闪退    -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

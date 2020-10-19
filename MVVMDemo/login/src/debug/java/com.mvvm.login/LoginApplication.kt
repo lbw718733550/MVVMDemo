@@ -1,7 +1,7 @@
 package com.mvvm.login
 
 import com.mvvm.common.BaseApplication
-import com.mvvm.service.moduleServeice
+import com.mvvm.service.moduleService
 import org.koin.core.context.loadKoinModules
 
 /**
@@ -14,7 +14,7 @@ class LoginApplication : BaseApplication() {
     override fun initConfig() {
         super.initConfig()
 
-        loadKoinModules(moduleServeice)
+        loadKoinModules(moduleService)
         loadKoinModules(moduleLogin)
     }
 

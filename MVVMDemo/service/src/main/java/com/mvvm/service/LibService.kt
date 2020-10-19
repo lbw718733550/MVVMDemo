@@ -6,6 +6,6 @@ import org.koin.dsl.module
 /**
  * Service模块相关的koin的module配置
  */
-val moduleServeice: Module = module {
+val moduleService: Module = module {
 
 }

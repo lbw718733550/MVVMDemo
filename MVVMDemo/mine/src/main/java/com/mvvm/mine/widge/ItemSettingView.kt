@@ -28,24 +28,37 @@ class ItemSettingView @JvmOverloads constructor(
         VItemSettingsBinding.inflate(LayoutInflater.from(context), this, true).apply {
             info = obItemInfo
         }
-        //region 读取配置属性
+        // region  2、读取配置属性
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.ItemSettingsView).apply {
-            //icon设置
-            itemBean.iconRes = getResourceId(R.styleable.ItemSettingsView_icon, R.drawable.ic_gift_card)
-            itemBean.iconColor = getInt(R.styleable.ItemSettingsView_icon, R.drawable.ic_gift_card)
+            //icon 设置
+            itemBean.iconRes =
+                getResourceId(R.styleable.ItemSettingsView_icon, R.drawable.ic_gift_card)
+            val iconRGB = getColor(R.styleable.ItemSettingsView_iconColor, 0)
+            itemBean.iconColor = iconRGB
             //title设置
-            itemBean.title = getString(R.styleable.ItemSettingsView_title) ?: "Title标题"
-            itemBean.titleColor = getColor(R.styleable.ItemSettingsView_titleColor, resources.getColor(R.color.colorPrimaryText)) as Int
+            itemBean.title = getString(R.styleable.ItemSettingsView_title) ?: ""
+            val titleRGB = getColor(
+                R.styleable.ItemSettingsView_titleColor,
+                resources.getColor(R.color.colorPrimaryText)
+            )
+            itemBean.titleColor = titleRGB
             //desc设置
-            itemBean.desc = getString(R.styleable.ItemSettingsView_desc) ?: "标题内容描述"
-            itemBean.descColor = getColor(R.styleable.ItemSettingsView_descColor, 0) as Int
+            itemBean.desc = getString(R.styleable.ItemSettingsView_desc) ?: ""
+            val descRGB = getColor(R.styleable.ItemSettingsView_descColor, 0)
+            itemBean.descColor = descRGB
             //arrow设置
-            itemBean.arrowRes = getResourceId(R.styleable.ItemSettingsView_arrow, R.drawable.ic_right)
-            itemBean.arrowColor = getColor(R.styleable.ItemSettingsView_arrowColor, resources.getColor(R.color.colorSecondaryText)) as Int
+            itemBean.arrowRes =
+                getResourceId(R.styleable.ItemSettingsView_arrow, R.drawable.ic_right)
+            val arrowRGB = getColor(
+                R.styleable.ItemSettingsView_arrowColor,
+                resources.getColor(R.color.colorSecondaryText)
+            )
+            itemBean.arrowColor = arrowRGB
         }
+
         // 回收 recycle
         attributes.recycle()
-        //endregion
+        // endregion
     }
 
 
@@ -167,19 +180,17 @@ class ItemSettingView @JvmOverloads constructor(
 @Keep
 data class ItemSettingsBean(
     var iconRes: Any = R.drawable.ic_gift_card,
-    var title: String = "Title标题",
-    var desc: String = "标题内容描述",
+    var title: String = "",
+    var desc: String = "",
     var titleColor: Int = R.color.colorPrimaryText,
     var descColor: Int = R.color.colorSecondaryText,
     var iconColor: Int = 0,
     var arrowColor: Int = 0,
     var arrowRes: Any = R.drawable.ic_right
-){
-
+) {
     //item的子View的点击listener
     var iconListener: View.OnClickListener? = null
     var titleListener: View.OnClickListener? = null
     var descListener: View.OnClickListener? = null
     var arrowListener: View.OnClickListener? = null
-
 }

@@ -1,10 +1,13 @@
 package com.mvvm.login
 
 import androidx.activity.viewModels
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ToastUtils
 import com.cniao5.login.net.RegisterRsp
 import com.mvvm.common.base.BaseActivity
+import com.mvvm.common.ktx.context
 import com.mvvm.login.databinding.ActivityLoginBinding
+import com.mvvm.service.repo.CniaoDbHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -12,6 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * 时间：16:46 20/10/11
  * 描述：登录界面
  */
+@Route(path = "/login/login")
 class LoginActivity : BaseActivity<ActivityLoginBinding>(){
 
     private val viewModel: LoginViewModel by viewModel()
@@ -40,8 +44,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(){
                     repoLogin()
                 }
             }
-            liveLoginRsp.observeKt {
-                ToastUtils.showShort("登录结果 " + it.toString())
+            liveLoginRsp.observeKt {rsp ->
+                ToastUtils.showShort("登录结果 " + rsp.toString())
+                rsp?.let {
+                    CniaoDbHelper.insertUserInfo(context, rsp)
+                }
+                finish()
             }
         }
     }

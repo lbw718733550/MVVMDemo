@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.mvvm.service.R
 
 /**
  * 项目适配用的BindAdapter
@@ -14,6 +15,8 @@ import com.bumptech.glide.Glide
  */
 @BindingAdapter("app:srcCompat", requireAll = false)
 fun imgSrc(iv: ImageView, src: Any?){
+    val imgRes = src ?: R.drawable.icon_account
+
     Glide.with(iv)
         .load(src)
         .into(iv)
@@ -46,4 +49,6 @@ fun tvColor(tv: TextView, color: Int) {
         tv.setTextColor(color)
     }
 }
+
+
 

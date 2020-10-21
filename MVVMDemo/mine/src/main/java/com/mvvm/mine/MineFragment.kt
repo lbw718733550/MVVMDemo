@@ -34,4 +34,11 @@ class MineFragment : BaseFragment() {
         }
     }
 
+    override fun initData() {
+        super.initData()
+        CniaoDbHelper.getLiveUserInfo(requireContext()).observerKt {
+            viewModel.liveUser.value = it
+        }
+    }
+
 }

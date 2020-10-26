@@ -1,3 +1,4 @@
+include ':libPermissionAnnotation'
 include ':mine'
 include ':mine'
 include ':login'

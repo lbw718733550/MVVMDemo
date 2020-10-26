@@ -1,12 +1,13 @@
-package com.mvvm.common.permission
+package com.mvvm.common.permission.annotation
 
 import java.lang.annotation.ElementType
 
 /**
- * 权限请求的成功
+ * 权限需不需要弹窗
+ *
  */
 
 @Target(AnnotationTarget.FUNCTION) //作用域只限于函数
-annotation class  PermissionGrant(
+annotation class  PermissionRational(
     val value: Int
 )

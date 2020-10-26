@@ -1,4 +1,4 @@
-package com.mvvm.common.permission
+package com.mvvm.common.permission.annotation
 
 import java.lang.annotation.ElementType
 

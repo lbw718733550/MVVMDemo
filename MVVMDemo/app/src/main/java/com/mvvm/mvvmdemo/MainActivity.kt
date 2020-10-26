@@ -1,6 +1,7 @@
 package com.mvvm.mvvmdemo
 
 import android.view.MenuItem
+import androidx.core.app.ActivityCompat
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -11,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.mvvm.mvvmdemo.databinding.ActivityMainBinding
 import com.mvvm.common.base.BaseActivity
+import com.mvvm.common.ktx.context
 import com.mvvm.common.widget.BnvVp2Mediator
 import com.mvvm.course.CourseFragment
 import com.mvvm.home.HomeFragment
@@ -49,6 +51,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 vp2.isUserInputEnabled = false
             }.attach()
         }
+
+
     }
 
     override fun initData() {

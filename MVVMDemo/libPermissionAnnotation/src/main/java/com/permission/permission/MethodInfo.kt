@@ -9,7 +9,7 @@ data class MethodInfo(
     /** 授权被拒绝的方法信息<requestCode, 方法名称>  */
     var deniedMethodMap: MutableMap<Int, String> = mutableMapOf(),
     /**  授权需不需要弹窗的方法信息<requestCode, 方法名称> */
-    var rationalMethodMap: MutableMap<Int, String> = mutableMapOf()
+    var rationalMethodMap: MutableMap<Int, String> = mutableMapOf(),
     /**  元素工具 */
     val elementUtil: Elements,
     /**  类所在的元素节点 */

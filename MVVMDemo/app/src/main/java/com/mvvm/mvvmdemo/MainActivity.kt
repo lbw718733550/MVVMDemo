@@ -1,22 +1,16 @@
 package com.mvvm.mvvmdemo
 
-import android.view.MenuItem
-import androidx.core.app.ActivityCompat
-import androidx.core.view.forEachIndexed
+import android.Manifest
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
-import com.mvvm.mvvmdemo.databinding.ActivityMainBinding
 import com.mvvm.common.base.BaseActivity
-import com.mvvm.common.ktx.context
+import com.mvvm.common.permission.annotation.PermissionGrant
 import com.mvvm.common.widget.BnvVp2Mediator
 import com.mvvm.course.CourseFragment
 import com.mvvm.home.HomeFragment
 import com.mvvm.mine.MineFragment
+import com.mvvm.mvvmdemo.databinding.ActivityMainBinding
 import com.mvvm.study.StudyFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -52,6 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }.attach()
         }
 
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
 
     }
 
@@ -59,6 +54,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.initData()
 
     }
+
+//    @PermissionGrant(RESULT_CODE_PER)
+//    fun permission(){
+//
+//    }
+
 }
 
 /**

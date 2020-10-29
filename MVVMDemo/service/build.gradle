@@ -15,6 +15,4 @@ dependencies {
     debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
     releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
 
-    //权限注解处理
-    api project(path: ':libPermissionAnnotation')
 }

@@ -142,4 +142,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //endregion
 
+    //region 权限判断运行时注解
+//    annotationProcessor project(path: ':libPermissionAnnotation')
+//    implementation project(path: ':libPermissionAnnotation')
+    //endregion
 }

@@ -33,6 +33,5 @@ dependencies {
     api 'com.blankj:utilcodex:1.29.0'
     //腾讯的key-value
     implementation("com.tencent:mmkv-static:1.2.1")
-    //权限注解处理
-    api project(path: ':libPermissionAnnotation')
+
 }

@@ -23,7 +23,7 @@ class RuntimePermissionAbstractProcessor() : AbstractProcessor() {
     /** 日志输出 */
     var messager: Messager ?= null
     /** 收集类里面的方法<key：类名，value：打上注解的方法> */
-    var method: MutableMap<String, MethodInfo> = mutableMapOf()
+    var methodMap: MutableMap<String, MethodInfo?> = mutableMapOf()
 
     override fun init(environment: ProcessingEnvironment?) {
         super.init(environment)
@@ -34,7 +34,7 @@ class RuntimePermissionAbstractProcessor() : AbstractProcessor() {
     }
 
     override fun process(set: MutableSet<out TypeElement>?, roundEnvironment: RoundEnvironment?): Boolean {
-        method.clear()
+        methodMap.clear()
 
         messager?.printMessage(Diagnostic.Kind.NOTE, "process start....")
         //处理各个注解 处理不了就返回false由系统自己处理
@@ -62,8 +62,54 @@ class RuntimePermissionAbstractProcessor() : AbstractProcessor() {
             //如果不是一个有效的方法 直接 返回 false
             if(!checkMethodValidator(element, annotation)) return false
             //有效方法
+            val methodElement = element as ExecutableElement
+            //得到元素的类名
+            val enclosingElement = methodElement.enclosingElement as TypeElement
+            val className = enclosingElement.qualifiedName.toString()
+            //创造类里面实体放到methodMap里面
+            var methodInfo = methodMap[className]
+            methodInfo  ?: MethodInfo()
+            methodMap[className] = methodInfo
+            //得到方法上的注解
+            val annotationClaz = methodElement.getAnnotation(annotation)
+            //得到方法的名称
+            val methodName = methodElement.simpleName.toString()
+            //得到方法的入参
+            val parameters = methodElement.parameters
+            //参数错误的信息
+            val message = "The method ${methodName} marked by annotation ${annotationClaz::class.java.simpleName} must have a unique parameter [string[] permission],which contains permission request denied results."
+            //如果annotation 是权限的这几个类型的，强转
+            when(annotationClaz){
+                is PermissionGrant -> {
+                        //判断方法是否有参数
+                        if (parameters == null || parameters.size < 1) {
+                            throw IllegalArgumentException(message)
+                        }
 
-            val executableElement = element as ExecutableElement
+                        //存入对应权限注解的方法信息
+                        val requestCode = (annotationClaz as PermissionGrant).value
+                        methodInfo!!.grantMethodMap[requestCode] = methodName
+                    }
+                is PermissionDenied -> {
+                        //判断方法是否有参数
+                        if (parameters == null || parameters.size < 1) {
+                            throw IllegalArgumentException(message)
+                        }
+                        //存入对应权限注解的方法信息
+                        val requestCode = (annotationClaz as PermissionGrant).value
+                        methodInfo!!.deniedMethodMap[requestCode] = methodName
+                    }
+                is PermissionRational -> {
+                        //判断方法是否有参数
+                        if (parameters == null || parameters.size < 1) {
+                            throw IllegalArgumentException(message)
+                        }
+                        //存入对应权限注解的方法信息
+                        val requestCode = (annotationClaz as PermissionGrant).value
+                        methodInfo!!.rationalMethodMap[requestCode] = methodName
+                    }
+            }
+
         }
         return true
     }

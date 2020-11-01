@@ -9,12 +9,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.cniao5.mine.MineContainerFragment
 import com.mvvm.mvvmdemo.databinding.ActivityMainBinding
 import com.mvvm.common.base.BaseActivity
 import com.mvvm.common.widget.BnvVp2Mediator
 import com.mvvm.course.CourseFragment
 import com.mvvm.home.HomeFragment
-import com.mvvm.mine.MineFragment
 import com.mvvm.study.StudyFragment
 
 class Main2Activity : BaseActivity<ActivityMainBinding>() {
@@ -35,7 +35,7 @@ class Main2Activity : BaseActivity<ActivityMainBinding>() {
         INDEXT_HOME to { HomeFragment() },
         INDEXT_COURSE to { CourseFragment() },
         INDEXT_STUDY to { StudyFragment() },
-        INDEXT_MINE to { MineFragment() }
+        INDEXT_MINE to { MineContainerFragment() }
     )
 
     override fun initConfig() {

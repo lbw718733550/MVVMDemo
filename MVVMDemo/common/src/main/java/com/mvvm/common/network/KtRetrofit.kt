@@ -1,5 +1,6 @@
 package com.mvvm.retrofitdemo.retrofit
 
+import com.mvvm.common.utils.HostInterceptor
 import com.mvvm.retrofitdemo.retrofit.config.*
 import com.mvvm.retrofitdemo.retrofit.config.LocalCookieJar
 import okhttp3.OkHttpClient
@@ -24,6 +25,7 @@ object KtRetrofit {
         .retryOnConnectionFailure(true)//重连
         .followRedirects(false)//重定向
         .cookieJar(LocalCookieJar())
+        .addInterceptor(HostInterceptor())
         .addNetworkInterceptor(CniaoInterceptor())//公共header的拦截器
         .addNetworkInterceptor(KtHttpLogInterceptor {
             logLevel(KtHttpLogInterceptor.LogLevel.BODY)

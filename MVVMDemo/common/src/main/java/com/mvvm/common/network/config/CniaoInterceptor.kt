@@ -3,6 +3,7 @@ package com.mvvm.retrofitdemo.retrofit.config
 import com.blankj.utilcode.util.*
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import com.mvvm.common.utils.CniaoSpUtils
 import okhttp3.CacheControl
 import okhttp3.FormBody
 import okhttp3.Interceptor
@@ -32,16 +33,20 @@ class CniaoInterceptor : Interceptor {
             "appid" to NET_CONFIG_APPID,
             "platform" to "android",//如果重复请求，可能会报重复签名错误，yapi 平台标记则不会
             "timestamp" to System.currentTimeMillis().toString(),
+
             "brand" to DeviceUtils.getManufacturer(),
             "model" to DeviceUtils.getModel(),
             "uuid" to DeviceUtils.getUniqueDeviceId(),
             "network" to NetworkUtils.getNetworkType().name,
             "system" to DeviceUtils.getSDKVersionName(),
+
+
             "version" to AppUtils.getAppVersionName()
+
         )
         //token仅在有值的时候才传递，
-        val tokenstr = "ss"
-        val localToken = SPStaticUtils.getString(SP_KEY_USER_TOKEN, tokenstr)
+        val localToken =
+            CniaoSpUtils.getString(SP_KEY_USER_TOKEN, originRequest.header("token")) ?: ""
         if (localToken.isNotEmpty()) {
             attachHeaders.add("token" to localToken)
         }

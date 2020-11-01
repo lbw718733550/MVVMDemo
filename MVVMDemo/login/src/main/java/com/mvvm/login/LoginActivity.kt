@@ -6,7 +6,9 @@ import com.blankj.utilcode.util.ToastUtils
 import com.cniao5.login.net.RegisterRsp
 import com.mvvm.common.base.BaseActivity
 import com.mvvm.common.ktx.context
+import com.mvvm.common.utils.CniaoSpUtils
 import com.mvvm.login.databinding.ActivityLoginBinding
+import com.mvvm.retrofitdemo.retrofit.config.SP_KEY_USER_TOKEN
 import com.mvvm.service.repo.CniaoDbHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,6 +50,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(){
                 ToastUtils.showShort("登录结果 " + rsp.toString())
                 rsp?.let {
                     CniaoDbHelper.insertUserInfo(context, rsp)
+                    CniaoSpUtils.put(SP_KEY_USER_TOKEN, rsp.token)
                 }
                 finish()
             }

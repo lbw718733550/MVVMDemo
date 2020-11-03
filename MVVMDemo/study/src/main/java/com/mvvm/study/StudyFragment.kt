@@ -18,4 +18,8 @@ class StudyFragment : BaseFragment()  {
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
         return FragmentStudyBinding.bind(view)
     }
+
+
+
+
 }

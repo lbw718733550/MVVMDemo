@@ -20,4 +20,6 @@ android {
 dependencies {
     implementation project(path: ':service')
     //from dependencies.gradle
+    implementation("com.daimajia.numberprogressbar:library:1.4@aar")
+
 }

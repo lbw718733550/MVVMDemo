@@ -15,6 +15,8 @@ import com.mvvm.service.network.onBizError
 import com.mvvm.service.network.onBizOk
 import com.mvvm.service.network.onFailure
 import com.mvvm.service.network.onSuccess
+import com.mvvm.study.repo.data.BoughtItemPagingSource
+import com.mvvm.study.repo.data.StudiedItemPagingSource
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -56,12 +58,22 @@ class StudyRepo(private val service: StudyService): IStudyResource {
             maxSize = pageSize * 3
         )
         return Pager(config, null){
-
+            StudiedItemPagingSource(service)
         }.flow
 
     }
 
 
     override suspend fun getBoughtCourse(): Flow<PagingData<BoughtRsp.Data>> {
+        val config =
+            PagingConfig(
+                pageSize = pageSize,
+                prefetchDistance = 5,
+                initialLoadSize = 10,
+                maxSize = pageSize * 3
+            )
+        return Pager(config = config, null) {
+            BoughtItemPagingSource(service)
+        }.flow
     }
 }
